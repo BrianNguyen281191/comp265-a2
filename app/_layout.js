@@ -1,40 +1,37 @@
-import { Tabs } from 'expo-router';
-import Ionicons from '@expo/vector-icons/Ionicons';
+// app/_layout.js
+import { Stack } from 'expo-router';
 
 export default function RootLayout() {
-    return (
-        <Tabs
-            screenOptions={{
-                tabBarActiveTintColor: '#ffd33d',
-                tabBarInactiveTintColor: '#fff',
-                tabBarStyle: { backgroundColor: '#8b0000' },
-                headerStyle: { backgroundColor: '#8b0000' },
-                headerTintColor: '#fff',
-                tabBarLabelStyle: { fontSize: 14, fontWeight: 'bold' },
-            }}
-        >
-            <Tabs.Screen
-                name="notes"
-                options={{
-                    title: 'Notes',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons name={focused ? 'book' : 'book-outline'} color={color} size={28} />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="profile"
-                options={{
-                    title: 'Profile',
-                    tabBarIcon: ({ color, focused }) => (
-                        <Ionicons name={focused ? 'person' : 'person-outline'} color={color} size={28} />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="index"
-                options={{ href: null }} 
-            />
-        </Tabs>
-    );
+  return (
+    <Stack>
+      {/* Main Tabs */}
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+
+      {/* Vocabulary detail route */}
+      <Stack.Screen
+        name="vocabulary/[word]"
+        options={{
+          headerTitle: 'Vocabulary',
+          headerBackTitle: 'Home',
+        }}
+      />
+
+      {/* Progress detail route */}
+      <Stack.Screen
+        name="progress/[progress]"
+        options={{
+          headerTitle: 'Progress Detail',
+          headerBackTitle: 'Home',
+        }}
+      />
+
+      <Stack.Screen
+        name="exercise/[game]"
+        options={{
+          headerTitle: 'Game',
+          headerBackTitle: 'Home',
+        }}
+      />
+    </Stack>
+  );
 }
