@@ -4,10 +4,8 @@ import { Stack } from 'expo-router';
 export default function RootLayout() {
   return (
     <Stack>
-      {/* Main Tabs */}
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      {/* Vocabulary detail route */}
       <Stack.Screen
         name="vocabulary/[word]"
         options={{
@@ -16,7 +14,6 @@ export default function RootLayout() {
         }}
       />
 
-      {/* Progress detail route */}
       <Stack.Screen
         name="progress/[progress]"
         options={{
